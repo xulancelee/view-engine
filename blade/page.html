@@ -1,0 +1,52 @@
+@extend(layout)
+
+@section(meta)
+<meta name="description" content="xulance - view-engine"/>
+@show
+
+@section(style)
+<link rel="stylesheet" href="/style/page.css">
+@show
+
+@section(content)
+
+@define
+function formatDate(dateStr) {
+    let fix = num => num >= 10 ? '' + num : '0' + num;
+    let date = new Date(dateStr);
+    return date.getFullYear() + '-' + fix(date.getMonth() + 1) + '-' + fix(date.getDate());
+}
+@defined
+
+<div class="">
+    <ul class="journal-list">
+        @for(let i = 0, article = props.article; i < article.length; i++)
+        @define
+        let item = article[i];
+        @defined
+        <li>
+            <div class="date">{{formatDate(item["create_date"])}}</div>
+            <div class="preview">
+                <h3><a href="/article/{{item.link}}">{{item.title}}</a></h3>
+                <div class="intro">
+                    <div class="image">
+                        <a href="/article/{{item.link}}" data-img="{{item.image}}" data-alt="{{item.title}}">
+                            <img src="{{item.image}}" alt="{{item.title}}">
+                        </a>
+                    </div>
+                    <p class="description">{{item.description}}</p>
+                </div>
+            </div>
+        </li>
+        @endfor
+    </ul>
+</div>
+@show
+
+@section(script)
+<script>
+    (function () {
+        console.log('you can do something here too.')
+    }());
+</script>
+@show

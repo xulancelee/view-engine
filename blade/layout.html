@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>{{this.title}}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    @section(meta)
+    <link rel="stylesheet" href="/style/global.css">
+    @section(style)
+    @section(head-script)
+</head>
+<body>
+<div class="layout">
+    @import(module.header)
+    <div class="container">
+        @section(content)
+    </div>
+    @import(module.footer)
+</div>
+
+@section(plugin)
+
+@section(script)
+</body>
+</html>
